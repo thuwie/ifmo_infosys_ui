@@ -14,6 +14,11 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './_services/auth.service';
+import { UserService } from './_services/user.service';
+import { VacationService } from './_services/vacation.service';
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -32,13 +37,20 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFontAwesomeModule,
     CdkTableModule,
     MatTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   exports: [
     CdkTableModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuard,
+    UserService,
+    VacationService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

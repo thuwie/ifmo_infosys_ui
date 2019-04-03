@@ -5,11 +5,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewComponent } from './view/view.component';
 import { ModerateComponent } from './moderate/moderate.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent,
+  {
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'view', pathMatch: 'full' },
       { path: 'view', component: ViewComponent },
