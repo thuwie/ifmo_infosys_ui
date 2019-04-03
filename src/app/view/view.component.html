@@ -1,3 +1,24 @@
-<p>
-  view works!
-</p>
+<div class="container">
+  <div class="row" *ngIf="isLoading; else loaded">
+    <div class="col">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+  <ng-template #loaded>
+    <div class="row" *ngIf="!vacations; else notNull">
+      <div class="col">
+        There is no vacations yet.
+      </div>
+    </div>
+    <ng-template #notNull>
+      <div class="row" *ngFor="let vacation of vacations; let i = index">
+        <div class="col">
+          <div>
+            Id: {{ vacation.vacationId }}
+            <br/>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

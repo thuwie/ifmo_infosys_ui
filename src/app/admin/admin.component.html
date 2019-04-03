@@ -1,3 +1,26 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+  <div class="row" *ngIf="isLoading; else loaded">
+    <div class="col">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+  <ng-template #loaded>
+    <div class="row" *ngIf="!users; else notNull">
+      <div class="col">
+        There is no users yet.
+      </div>
+    </div>
+    <ng-template #notNull>
+      <div class="row" *ngFor="let user of users; let i = index">
+        <div class="col">
+          <div>
+            Id: {{ user.userId }}
+            Username: {{ user.username }}
+            Secret: {{ user.password }}
+            <br/>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
