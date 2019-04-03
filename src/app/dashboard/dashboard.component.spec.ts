@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { expect } from '@angular/platform-browser/testing/src/matchers';
+import { describe } from '@angular/core/testing/src/testing_internal';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

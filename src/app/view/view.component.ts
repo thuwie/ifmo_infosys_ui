@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { Vacation } from '../entity/Vacation';
+import { VacationService } from '../_services/vacation.service';
+import { Vacation } from '../_models/Vacation';
 
 @Component({
   selector: 'app-view',
@@ -12,7 +12,7 @@ export class ViewComponent implements OnInit {
   private vacations: Vacation[];
   private isLoading: boolean;
 
-  constructor(private apiService: ApiService) {
+  constructor(private vacationService: VacationService) {
     this.isLoading = false;
   }
 
@@ -22,7 +22,7 @@ export class ViewComponent implements OnInit {
 
   async getAllVacations() {
     try {
-      this.vacations = await this.apiService.getAllVacations();
+      this.vacations = await this.vacationService.getAll();
       console.log(this.vacations);
     } catch (error) {
       console.error(error.message);

@@ -10,10 +10,10 @@ import { ViewComponent } from './view/view.component';
 import { ModerateComponent } from './moderate/moderate.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppRoutingModule } from './/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
