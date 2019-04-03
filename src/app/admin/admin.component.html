@@ -11,16 +11,37 @@
       </div>
     </div>
     <ng-template #notNull>
-      <div class="row" *ngFor="let user of users; let i = index">
-        <div class="col">
-          <div>
-            Id: {{ user.userId }}
-            Username: {{ user.username }}
-            Secret: {{ user.password }}
-            <br/>
-          </div>
-        </div>
-      </div>
+      <mat-table [dataSource]="users">
+        <ng-container matColumnDef="Id">
+          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="EmployeeId">
+          <mat-header-cell *matHeaderCellDef>EmployeeId</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.employeeId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Username">
+          <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Password">
+          <mat-header-cell *matHeaderCellDef>Password</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.password}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+      </mat-table>
+      <!--<div class="row" *ngFor="let user of users; let i = index">-->
+        <!--<div class="col">-->
+          <!--<div>-->
+            <!--Id: {{ user.userId }}-->
+            <!--Username: {{ user.username }}-->
+            <!--Secret: {{ user.password }}-->
+            <!--<br/>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
     </ng-template>
   </ng-template>
 </div>

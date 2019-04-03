@@ -11,6 +11,12 @@ export class AdminComponent implements OnInit {
 
   private users: User[];
   private isLoading: boolean;
+  private displayedColumns = [
+    'Id',
+    'EmployeeId',
+    'Username',
+    'Password'
+    ];
 
   constructor(private apiService: ApiService) {
     this.isLoading = true;
