@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { VacationService } from '../_services/vacation.service';
-import { Vacation } from '../_models/Vacation';
+import { VacationService } from '../../../_services/vacation.service';
+import { Vacation } from '../../../_models/Vacation';
 
 @Component({
   selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss']
+  templateUrl: './vacations.component.html',
+  styleUrls: ['./vacations.component.scss']
 })
-export class ViewComponent implements OnInit {
+export class VacationsComponent implements OnInit {
 
   private vacations: Vacation[];
   private isLoading: boolean;

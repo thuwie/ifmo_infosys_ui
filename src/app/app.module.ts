@@ -6,11 +6,11 @@ import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ViewComponent } from './view/view.component';
-import { ModerateComponent } from './moderate/moderate.component';
-import { AdminComponent } from './admin/admin.component';
+import { VacationsComponent } from './dashboard/pages/vacations/vacations.component';
+import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
+import { AdminComponent } from './dashboard/pages/admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './dashboard/pages/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +24,7 @@ import { AuthGuard } from './_guards/auth.guard';
   declarations: [
     AppComponent,
     LoginComponent,
-    ViewComponent,
+    VacationsComponent,
     ModerateComponent,
     AdminComponent,
     DashboardComponent,

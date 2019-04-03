@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ViewComponent } from './view/view.component';
-import { ModerateComponent } from './moderate/moderate.component';
-import { AdminComponent } from './admin/admin.component';
+import { VacationsComponent } from './dashboard/pages/vacations/vacations.component';
+import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
+import { AdminComponent } from './dashboard/pages/admin/admin.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'view', pathMatch: 'full' },
-      { path: 'view', component: ViewComponent },
+      { path: 'vacations', component: VacationsComponent },
       { path: 'moderate', component: ModerateComponent },
       { path: 'admin', component: AdminComponent },
     ]
