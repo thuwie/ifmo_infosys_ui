@@ -5,7 +5,7 @@ import { Vacation } from '../../../_models/Vacation';
 @Component({
   selector: 'app-view',
   templateUrl: './vacations.component.html',
-  styleUrls: ['./vacations.component.scss']
+  styleUrls: ['./vacations.component.css']
 })
 export class VacationsComponent implements OnInit {
 

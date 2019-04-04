@@ -1,38 +1,36 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <app-header></app-header>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <mat-sidenav-container class="row">
-        <mat-sidenav mode="side" opened role="navigation" class="col-2">
-          <!--<div [routerLink]="['vacations']">Vacations</div>-->
-          <mat-list>
-            <a mat-list-item [routerLink]="['vacations']">
-              Vacations
-            </a>
-            <mat-divider></mat-divider>
-            <a mat-list-item [routerLink]="['moderate']">
-              Moderate
-            </a>
-            <mat-divider></mat-divider>
-            <a mat-list-item [routerLink]="['admin']">
-              Admin panel
-            </a>
-            <mat-divider></mat-divider>
-            <a mat-list-item (click)="logout()">
-              Logout
-            </a>
-          </mat-list>
-        </mat-sidenav>
-        <mat-sidenav-content class="col-10">
-          <main>
-            <router-outlet></router-outlet>
-          </main>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-    </div>
-  </div>
-</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Vacation planner</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['vacations']">
+        Vacations
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item [routerLink]="['moderate']">
+        Moderate
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item [routerLink]="['admin']">
+        Admin panel
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      <div><app-header></app-header></div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

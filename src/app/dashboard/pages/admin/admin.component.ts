@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../_models/User';
 import { UserService } from '../../../_services/user.service';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
 
@@ -17,6 +18,12 @@ export class AdminComponent implements OnInit {
     'Username',
     'Password'
   ];
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  // MatPaginator Output
+  pageEvent: PageEvent;
 
   constructor(private userService: UserService) {
     this.isLoading = true;

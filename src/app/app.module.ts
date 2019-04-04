@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule, MatSidenavModule, MatDividerModule, MatListModule} from '@angular/material';
+import {
+  MatTabsModule, MatSidenavModule, MatDividerModule, MatListModule, MatMenuModule,
+  MatIconModule, MatGridListModule, MatProgressSpinnerModule, MatToolbarModule, MatButtonModule, MatCardModule,
+  MatInputModule, MatDialogModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +24,8 @@ import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
 import { VacationService } from './_services/vacation.service';
 import { AuthGuard } from './_guards/auth.guard';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -42,8 +48,19 @@ import { AuthGuard } from './_guards/auth.guard';
     MatSidenavModule,
     MatDividerModule,
     MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatGridListModule,
+    FlexLayoutModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
-    FormsModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatDialogModule,
+    FormsModule,
+    LayoutModule
   ],
   exports: [
     CdkTableModule,
