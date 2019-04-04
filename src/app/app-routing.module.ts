@@ -5,7 +5,6 @@ import { VacationsComponent } from './dashboard/pages/vacations/vacations.compon
 import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
 import { AdminComponent } from './dashboard/pages/admin/admin.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { MainNavComponent } from './main-nav/main-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -13,7 +12,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
-    // path: 'dashboard', component: MainNavComponent, canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'vacations', pathMatch: 'full' },
       { path: 'vacations', component: VacationsComponent },
