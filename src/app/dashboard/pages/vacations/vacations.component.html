@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" *ngIf="isLoading; else loaded">
     <div class="col">
-      <i class="fa fa-spinner fa-spin"></i>
+      <mat-spinner fxLayout="row" fxLayoutAlign="center center" [diameter]="100"></mat-spinner>
     </div>
   </div>
   <ng-template #loaded>
@@ -11,14 +11,15 @@
       </div>
     </div>
     <ng-template #notNull>
-      <div class="row" *ngFor="let vacation of vacations; let i = index">
-        <div class="col">
-          <div>
-            Id: {{ vacation.vacationId }}
-            <br/>
-          </div>
-        </div>
-      </div>
+      <mat-table [dataSource]="vacations">
+        <ng-container matColumnDef="Id">
+          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.vacationId}}</mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+      </mat-table>
     </ng-template>
   </ng-template>
 </div>
+

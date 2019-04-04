@@ -11,6 +11,9 @@ export class VacationsComponent implements OnInit {
 
   private vacations: Vacation[];
   private isLoading: boolean;
+  private displayedColumns = [
+    'Id'
+  ];
 
   constructor(private vacationService: VacationService) {
     this.isLoading = false;
