@@ -6,9 +6,7 @@
   </div>
   <ng-template #loaded>
     <div class="row" *ngIf="!vacations; else notNull">
-      <div class="col">
-        There is no vacations yet.
-      </div>
+      <mat-card>There is no vacations yet.</mat-card>
     </div>
     <ng-template #notNull>
       <mat-table [dataSource]="vacations">

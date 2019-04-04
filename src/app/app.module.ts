@@ -6,7 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import {
   MatTabsModule, MatSidenavModule, MatDividerModule, MatListModule, MatMenuModule,
   MatIconModule, MatGridListModule, MatProgressSpinnerModule, MatToolbarModule, MatButtonModule, MatCardModule,
-  MatInputModule, MatDialogModule
+  MatInputModule, MatDialogModule, MatBadgeModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -59,6 +59,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatInputModule,
     MatDialogModule,
+    MatBadgeModule,
     FormsModule,
     LayoutModule
   ],
