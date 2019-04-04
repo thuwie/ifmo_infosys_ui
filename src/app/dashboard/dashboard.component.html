@@ -1,23 +1,38 @@
-<app-header></app-header>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-2">
-      <div class="row">
-        <div class="jumbotron-fluid" [routerLink]="['vacations']">Vacations</div>
-      </div>
-      <div class="row">
-        <div class="jumbotron-fluid" [routerLink]="['moderate']">Moderate</div>
-      </div>
-      <div class="row">
-        <div class="jumbotron-fluid" [routerLink]="['admin']">Admin</div>
-      </div>
-      <div class="row">
-        <button class="jumbotron-fluid" (click)="logout()">Logout</button>
-      </div>
-
+    <div class="col-12">
+      <app-header></app-header>
     </div>
-    <div class="col-10">
-      <router-outlet></router-outlet>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <mat-sidenav-container class="row">
+        <mat-sidenav mode="side" opened role="navigation" class="col-2">
+          <!--<div [routerLink]="['vacations']">Vacations</div>-->
+          <mat-list>
+            <a mat-list-item [routerLink]="['vacations']">
+              Vacations
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item [routerLink]="['moderate']">
+              Moderate
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item [routerLink]="['admin']">
+              Admin panel
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="logout()">
+              Logout
+            </a>
+          </mat-list>
+        </mat-sidenav>
+        <mat-sidenav-content class="col-10">
+          <main>
+            <router-outlet></router-outlet>
+          </main>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
     </div>
   </div>
 </div>

@@ -1,5 +1,20 @@
-.block {
-  padding: 10px;
-  border: 1px solid black;
-  background-color: lightslategray;
+body {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+.fill {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+
+}
+
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
 }

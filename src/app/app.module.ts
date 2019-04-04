@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule, MatSidenavModule, MatDividerModule, MatListModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -37,6 +38,10 @@ import { AuthGuard } from './_guards/auth.guard';
     AngularFontAwesomeModule,
     CdkTableModule,
     MatTableModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule,
     BrowserAnimationsModule,
     FormsModule
   ],
