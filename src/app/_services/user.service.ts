@@ -20,7 +20,7 @@ export class UserService {
       users = users.data;
     } catch (error) {
       console.error(error.message);
-      users = null;
+      throw error;
     }
     return users;
   }
@@ -31,9 +31,25 @@ export class UserService {
       user = await axios.get(`${this.apiHost}/user/get/:${id}`);
     } catch (error) {
       console.error(error.message);
-      user = null;
+      throw error;
     }
     return user;
+  }
+
+  async create(user: User): any {
+
+  }
+
+  async update(user: User): any {
+    try {
+      await axios.post(`${this.apiHost}/user/updateUser`, user);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteById(id: number): any {
+
   }
 
 

@@ -6,14 +6,14 @@ import { MatTableModule } from '@angular/material/table';
 import {
   MatTabsModule, MatSidenavModule, MatDividerModule, MatListModule, MatMenuModule,
   MatIconModule, MatGridListModule, MatProgressSpinnerModule, MatToolbarModule, MatButtonModule, MatCardModule,
-  MatInputModule, MatDialogModule, MatBadgeModule
+  MatInputModule, MatDialogModule, MatBadgeModule, MatSortModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { VacationsComponent } from './dashboard/pages/vacations/vacations.component';
 import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
-import { AdminComponent } from './dashboard/pages/admin/admin.component';
+import { AdminComponent, AdminDialogComponent } from './dashboard/pages/admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/pages/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,8 +34,12 @@ import { LayoutModule } from '@angular/cdk/layout';
     VacationsComponent,
     ModerateComponent,
     AdminComponent,
+    AdminDialogComponent,
     DashboardComponent,
     HeaderComponent
+  ],
+  entryComponents: [
+    AdminDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatInputModule,
     MatDialogModule,
     MatBadgeModule,
+    MatSortModule,
     FormsModule,
     LayoutModule
   ],

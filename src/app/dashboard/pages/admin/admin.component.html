@@ -9,9 +9,9 @@
       <mat-card>There is no users yet.</mat-card>
     </div>
     <ng-template #notNull>
-      <mat-table [dataSource]="users">
+      <mat-table [dataSource]="users" matSort class="mat-elevation-z8">
         <ng-container matColumnDef="Id">
-          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="EmployeeId">
@@ -25,6 +25,14 @@
         <ng-container matColumnDef="Password">
           <mat-header-cell *matHeaderCellDef>Password</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.password}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Actions">
+          <mat-header-cell  *matHeaderCellDef ></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="openDialog(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

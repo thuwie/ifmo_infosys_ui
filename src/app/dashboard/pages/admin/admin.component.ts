@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../../_models/User';
 import { UserService } from '../../../_services/user.service';
-import { PageEvent } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef, MatSort, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-admin',
@@ -9,6 +9,7 @@ import { PageEvent } from '@angular/material';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  //@ViewChild(MatSort) sort: MatSort;
 
   private users: User[];
   private isLoading: boolean;
@@ -16,17 +17,15 @@ export class AdminComponent implements OnInit {
     'Id',
     'EmployeeId',
     'Username',
-    'Password'
+    'Password',
+    'Actions'
   ];
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  private name: string;
 
-  // MatPaginator Output
-  pageEvent: PageEvent;
-
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              public dialog: MatDialog) {
     this.isLoading = true;
+    this.name = 'az';
   }
 
   ngOnInit() {
@@ -36,6 +35,7 @@ export class AdminComponent implements OnInit {
   async getAllUsers() {
     try {
       this.users = await this.userService.getAll();
+      //this.users.sort = this.sort;
     } catch (error) {
       console.error(error.message);
     }
@@ -49,6 +49,36 @@ export class AdminComponent implements OnInit {
     } catch (error) {
       console.error(error.message);
     }
+  }
+
+  openDialog(row: User): void {
+    console.log(row);
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = row;
+    const dialogRef = this.dialog.open(AdminDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(updatedUser => {
+      console.log('The dialog was closed');
+      console.log(updatedUser);
+      this.userService.update(updatedUser);
+    });
+  }
+
+}
+
+@Component({
+  selector: 'app-admin-dialog',
+  templateUrl: './admin.dialog.component.html',
+})
+export class AdminDialogComponent {
+
+  constructor(public dialogRef: MatDialogRef<AdminDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: User) {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
