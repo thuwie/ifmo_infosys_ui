@@ -36,11 +36,11 @@ export class UserService {
     return user;
   }
 
-  async create(user: User): any {
+  // async create(user: User): any {
+  //
+  // }
 
-  }
-
-  async update(user: User): any {
+  async update(user: User): Promise<any> {
     try {
       await axios.post(`${this.apiHost}/user/updateUser`, user);
     } catch (error) {
@@ -48,9 +48,7 @@ export class UserService {
     }
   }
 
-  async deleteById(id: number): any {
-
-  }
-
-
+  // async deleteById(id: number): any {
+  //
+  // }
 }
