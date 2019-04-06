@@ -18,11 +18,13 @@ export class AuthService {
 
   async login(username: string, password: string): Promise<boolean> {
     try {
-      const response = await axios.post(`${this.apiHost}/authenticate`, JSON.stringify({
+      const response = await axios.post(`${this.apiHost}/auth`, {
         username: username,
         password: password
-      }));
+      });
       // const token = response.token;
+      console.log('respo');
+      console.log(response);
       const token = '{ username: "test", token: "token" }'; // Waiting for the API to return me a token.
       if (token) {
         this.token = token;
@@ -33,7 +35,7 @@ export class AuthService {
         throw new Error('Authentication failed');
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
       return false;
     }
   }

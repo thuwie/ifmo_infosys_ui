@@ -48,6 +48,14 @@ export class UserService {
     }
   }
 
+  /*async processes(user: User): Promise<any> {
+    try {
+      await axios.post(`${this.apiHost}/processes/initiateVacation`, user);
+    } catch (error) {
+      throw error;
+    }
+  }*/
+
   // async deleteById(id: number): any {
   //
   // }
