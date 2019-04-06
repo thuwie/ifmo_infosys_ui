@@ -1,17 +1,20 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../../_models/User';
 import { UserService } from '../../../_services/user.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef, MatSort, PageEvent } from '@angular/material';
+import {
+  MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef, MatSort, MatTableDataSource,
+  PageEvent
+} from '@angular/material';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
-  //@ViewChild(MatSort) sort: MatSort;
+export class AdminComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatSort) sort: MatSort;
 
-  private users: User[];
+  private dataSourceUser = new MatTableDataSource<User>();
   private isLoading: boolean;
   private displayedColumns = [
     'Id',
@@ -32,10 +35,14 @@ export class AdminComponent implements OnInit {
     this.getAllUsers();
   }
 
+  ngAfterViewInit() {
+    this.dataSourceUser.sort = this.sort;
+  }
+
   async getAllUsers() {
     try {
-      this.users = await this.userService.getAll();
-      //this.users.sort = this.sort;
+      this.dataSourceUser.data = await this.userService.getAll() as User[];
+      // this.users.sort = this.sort;
     } catch (error) {
       console.error(error.message);
     }
@@ -64,7 +71,6 @@ export class AdminComponent implements OnInit {
       this.userService.update(updatedUser);
     });
   }
-
 }
 
 @Component({

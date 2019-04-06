@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row" *ngIf="isLoading; else loaded">
-    <div class="col">
-      <mat-spinner fxLayout="row" fxLayoutAlign="center center" [diameter]="100"></mat-spinner>
-    </div>
+    <mat-card fxLayout="row" fxLayoutAlign="center center" >
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </mat-card>
   </div>
   <ng-template #loaded>
     <div class="row" *ngIf="!vacations; else notNull">

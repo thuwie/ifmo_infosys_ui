@@ -13,9 +13,15 @@
         Moderate
       </a>
       <mat-divider></mat-divider>
+      <a mat-list-item [routerLink]="['tasks']">
+        Tasks
+      </a>
+      <mat-divider></mat-divider>
       <a mat-list-item [routerLink]="['admin']">
         Admin panel
       </a>
+      <mat-divider></mat-divider>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
