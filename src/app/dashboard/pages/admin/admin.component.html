@@ -9,7 +9,7 @@
       <mat-card>There is no users yet.</mat-card>
     </div>
     <ng-template #notNull>
-      <mat-table [dataSource]="dataSourceUser" matSort>
+      <mat-table [dataSource]="dataSourceUser" matSort matSortDirection="asc">
         <ng-container matColumnDef="Id">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
@@ -32,7 +32,7 @@
             <button mat-icon-button (click)="openDialog(row)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="initiateProcess(row)">
+            <button mat-icon-button (click)="getUser(row)">
               <mat-icon>assignment</mat-icon>
             </button>
           </mat-cell>

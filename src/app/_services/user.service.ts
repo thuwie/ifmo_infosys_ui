@@ -28,7 +28,7 @@ export class UserService {
   async getById(id: number): Promise<User> {
     let user;
     try {
-      user = await axios.get(`${this.apiHost}/user/get/:${id}`);
+      user = await axios.get(`${this.apiHost}/user/get/${id}`);
     } catch (error) {
       console.error(error.message);
       throw error;

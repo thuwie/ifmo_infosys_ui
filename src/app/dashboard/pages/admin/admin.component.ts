@@ -41,7 +41,8 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   async getAllUsers() {
     try {
-      this.dataSourceUser.data = await this.userService.getAll() as User[];
+      const users = await this.userService.getAll() as User[];
+      this.dataSourceUser.data = users.sort((a, b) => a.userId - b.userId);
       // this.users.sort = this.sort;
     } catch (error) {
       console.error(error.message);
@@ -49,10 +50,11 @@ export class TasksComponent implements OnInit, AfterViewInit {
     this.isLoading = false;
   }
 
-  async getUser(id: number) {
+  async getUser(row: User) {
     let user: User = null;
     try {
-      user = await this.userService.getById(id);
+      user = await this.userService.getById(row.userId);
+      console.log(user);
     } catch (error) {
       console.error(error.message);
     }
