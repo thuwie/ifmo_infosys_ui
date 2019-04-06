@@ -26,6 +26,8 @@ import { VacationService } from './_services/vacation.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
+import { TasksComponent } from './dashboard/pages/tasks/tasks.component';
+import { TaskService } from './_services/task.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     AdminComponent,
     AdminDialogComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    TasksComponent
   ],
   entryComponents: [
     AdminDialogComponent
@@ -70,13 +73,15 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   exports: [
     CdkTableModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ],
   providers: [
     AuthService,
     AuthGuard,
     UserService,
-    VacationService
+    VacationService,
+    TaskService
   ],
   bootstrap: [AppComponent]
 })

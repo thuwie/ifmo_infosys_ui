@@ -6,6 +6,7 @@ import { ModerateComponent } from './dashboard/pages/moderate/moderate.component
 import { AdminComponent } from './dashboard/pages/admin/admin.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TasksComponent } from './dashboard/pages/tasks/tasks.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'vacations', component: VacationsComponent },
       { path: 'moderate', component: ModerateComponent },
       { path: 'admin', component: AdminComponent },
+      { path: 'tasks', component: TasksComponent },
     ]
   },
 ];
