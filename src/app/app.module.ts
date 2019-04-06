@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { VacationsComponent } from './dashboard/pages/vacations/vacations.component';
 import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
-import { AdminComponent, AdminDialogComponent } from './dashboard/pages/admin/admin.component';
+import { TasksComponent, AdminDialogComponent } from './dashboard/pages/admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/pages/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,7 @@ import { TaskService } from './_services/task.service';
     LoginComponent,
     VacationsComponent,
     ModerateComponent,
-    AdminComponent,
+    TasksComponent,
     AdminDialogComponent,
     DashboardComponent,
     HeaderComponent,

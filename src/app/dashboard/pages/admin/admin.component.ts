@@ -11,7 +11,7 @@ import {
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit, AfterViewInit {
+export class TasksComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   private dataSourceUser = new MatTableDataSource<User>();
