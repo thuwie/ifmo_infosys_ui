@@ -18,6 +18,7 @@ export class UserService {
     try {
       users = await axios.get(`${this.apiHost}/user/all`);
       users = users.data;
+      console.log(users);
     } catch (error) {
       console.error(error.message);
       throw error;
@@ -36,9 +37,18 @@ export class UserService {
     return user;
   }
 
-  // async create(user: User): any {
-  //
-  // }
+  async createUser(user: User): any {
+    try {
+      console.log(`Create user`);
+      console.log(user);
+      const res = await axios.post(`${this.apiHost}/user/addUser`, user);
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+
+  }
 
   async update(user: User): Promise<any> {
     try {
@@ -49,12 +59,12 @@ export class UserService {
   }
 
   /*async processes(user: User): Promise<any> {
-    try {
-      await axios.post(`${this.apiHost}/processes/initiateVacation`, user);
-    } catch (error) {
-      throw error;
-    }
-  }*/
+   try {
+   await axios.post(`${this.apiHost}/processes/initiateVacation`, user);
+   } catch (error) {
+   throw error;
+   }
+   }*/
 
   // async deleteById(id: number): any {
   //

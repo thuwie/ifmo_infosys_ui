@@ -5,22 +5,25 @@ import {
   MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef, MatSort, MatTableDataSource,
   PageEvent
 } from '@angular/material';
+import { AdminEditDialogComponent } from './edit-dialog/admin-edit-dialog.component';
+import { AdminAddDialogComponent } from './add-dialog/admin-add-dialog.component';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class TasksComponent implements OnInit, AfterViewInit {
+export class AdminComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   private dataSourceUser = new MatTableDataSource<User>();
   private isLoading: boolean;
   private displayedColumns = [
     'Id',
-    'EmployeeId',
     'Username',
     'Password',
+    'Role',
+    'Employee',
     'Actions'
   ];
   private name: string;
@@ -42,7 +45,15 @@ export class TasksComponent implements OnInit, AfterViewInit {
   async getAllUsers() {
     try {
       const users = await this.userService.getAll() as User[];
-      this.dataSourceUser.data = users.sort((a, b) => a.userId - b.userId);
+      let data = users.map(user => {
+        user.firstName = user.firstName ? user.firstName : ' - // -';
+        user.secondName = user.secondName ? user.secondName : ' - // -';
+        return user;
+      });
+      console.log(data);
+      data = data.sort((a, b) => a.userId - b.userId);
+      console.log(data);
+      this.dataSourceUser.data = data;
       // this.users.sort = this.sort;
     } catch (error) {
       console.error(error.message);
@@ -51,42 +62,53 @@ export class TasksComponent implements OnInit, AfterViewInit {
   }
 
   async getUser(row: User) {
-    let user: User = null;
+    let user = null;
     try {
       user = await this.userService.getById(row.userId);
-      console.log(user);
+      console.log(user.data);
     } catch (error) {
       console.error(error.message);
     }
   }
 
-  openDialog(row: User): void {
+  async editUser(row: User): void {
     console.log(row);
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = row;
-    const dialogRef = this.dialog.open(AdminDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AdminEditDialogComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(updatedUser => {
-      console.log('The dialog was closed');
-      console.log(updatedUser);
-      this.userService.update(updatedUser);
+    dialogRef.afterClosed().subscribe(async updatedUser => {
+      if (updatedUser) {
+        console.log('The dialog was closed');
+        console.log(updatedUser);
+        await this.userService.update(updatedUser);
+      } else {
+        console.log('woopsie');
+      }
+
+    });
+  }
+
+  async addUser(): void {
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.dialog.open(AdminAddDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(async user => {
+      if (user) {
+        console.log('The dialog was closed');
+        console.log(user);
+        try {
+          await this.userService.createUser(user);
+        } catch (error) {
+
+          console.error(error.message);
+        }
+
+      } else {
+        console.log('woopsie');
+      }
     });
   }
 }
 
-@Component({
-  selector: 'app-admin-dialog',
-  templateUrl: './admin.dialog.component.html',
-})
-export class AdminDialogComponent {
-
-  constructor(public dialogRef: MatDialogRef<AdminDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: User) {
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}

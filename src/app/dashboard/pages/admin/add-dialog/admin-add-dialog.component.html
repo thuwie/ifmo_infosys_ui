@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Add user</h1>
+<div mat-dialog-content>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="usernameFormGroup">
+      <form [formGroup]="usernameFormGroup">
+        <ng-template matStepLabel>Username</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="usernameCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="passwordFormGroup">
+      <form [formGroup]="passwordFormGroup">
+        <ng-template matStepLabel>Password</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="passwordCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="roleFormGroup">
+      <form [formGroup]="roleFormGroup">
+        <ng-template matStepLabel>Role</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Employee ID" formControlName="roleCtrl">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="employeeIdFormGroup" optional>
+      <form [formGroup]="employeeIdFormGroup">
+        <ng-template matStepLabel>Employee ID</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Employee ID" formControlName="employeeCtrl">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSubmitClick()">Submit</button>
+  </div>
+</div>

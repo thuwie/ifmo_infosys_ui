@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { VacationsComponent } from './dashboard/pages/vacations/vacations.component';
 import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
-import { TasksComponent } from './dashboard/pages/admin/admin.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksComponent } from './dashboard/pages/tasks/tasks.component';
+import { AdminComponent } from './dashboard/pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'vacations', pathMatch: 'full' },
       { path: 'vacations', component: VacationsComponent },
       { path: 'moderate', component: ModerateComponent },
-      { path: 'admin', component: TasksComponent },
+      { path: 'admin', component: AdminComponent },
       { path: 'tasks', component: TasksComponent },
     ]
   },
