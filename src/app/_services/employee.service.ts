@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import axios from 'axios';
-import { User } from '../_models/User';
+import { Employee } from '../_models/Employee';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class EmployeeService {
   private apiHost: string;
 
   constructor() {
     this.apiHost = environment.apiHost;
   }
 
-  async getAll(): Promise<User[]> {
+  async getAll(): Promise<Employee[]> {
     let users;
     try {
       users = await axios.get(`${this.apiHost}/user/all`);
@@ -26,7 +26,7 @@ export class UserService {
     return users;
   }
 
-  async getById(id: number): Promise<User> {
+  async getById(id: number): Promise<Employee> {
     let user;
     try {
       user = await axios.get(`${this.apiHost}/user/get/${id}`);
@@ -37,7 +37,7 @@ export class UserService {
     return user;
   }
 
-  async createUser(user: User): Promise<any> {
+  async createUser(user: Employee): Promise<any> {
     try {
       console.log(`Create user`);
       console.log(user);
@@ -50,7 +50,7 @@ export class UserService {
 
   }
 
-  async update(user: User): Promise<any> {
+  async update(user: Employee): Promise<any> {
     try {
       await axios.post(`${this.apiHost}/user/updateUser`, user);
     } catch (error) {

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row" *ngIf="isLoading; else loaded">
+    <mat-card fxLayout="row" fxLayoutAlign="center center">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </mat-card>
+  </div>
+  <ng-template #loaded>
+    <div >
+     <mat-card fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="20px">
+        <button mat-icon-button (click)="addUser()">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </mat-card>
+    </div>
+    <div class="row" *ngIf="!dataSourceUser; else notNull">
+      <mat-card class="buttons">There is no users yet.</mat-card>
+    </div>
+
+    <ng-template #notNull>
+      <mat-table [dataSource]="dataSourceUser" matSort matSortDirection="asc">
+        <ng-container matColumnDef="Id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Username">
+          <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.username}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Password">
+          <mat-header-cell *matHeaderCellDef>Password</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.password}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Role">
+          <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.roleName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Employee">
+          <mat-header-cell *matHeaderCellDef>Employee</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.firstName}} {{element.secondName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="editUser(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="getUser(row)">
+              <mat-icon>assignment</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+      </mat-table>
+    </ng-template>
+  </ng-template>
+</div>

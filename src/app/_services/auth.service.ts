@@ -18,13 +18,13 @@ export class AuthService {
 
   async login(username: string, password: string): Promise<boolean> {
     try {
-      const response = await axios.post(`${this.apiHost}/auth`, {
+      /*const response = await axios.post(`${this.apiHost}/auth`, {
         username: username,
         password: password
-      });
+      });*/
       // const token = response.token;
       console.log('respo');
-      console.log(response);
+      // console.log(token);
       const token = '{ username: "test", token: "token" }'; // Waiting for the API to return me a token.
       if (token) {
         this.token = token;

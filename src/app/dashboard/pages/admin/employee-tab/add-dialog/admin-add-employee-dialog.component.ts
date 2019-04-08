@@ -1,15 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { User } from '../../../../_models/User';
+import { User } from '../../../../../_models/User';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
-  selector: 'app-admin-add-dialog',
-  templateUrl: './admin-add-dialog.component.html',
+  selector: 'app-admin-add-employee-dialog',
+  templateUrl: './admin-add-employee-dialog.component.html',
 })
-export class AdminAddDialogComponent implements OnInit {
+export class AdminAddEmployeeDialogComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
-              public dialogRef: MatDialogRef<AdminAddDialogComponent>,
+              public dialogRef: MatDialogRef<AdminAddEmployeeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: User) {
   }
 
@@ -36,12 +36,18 @@ export class AdminAddDialogComponent implements OnInit {
 
   onSubmitClick(): void {
     console.log('clikc');
-    const user = {};
-    user.username = this.usernameFormGroup.value.usernameCtrl;
-    user.password = this.passwordFormGroup.value.passwordCtrl;
-    user.roleName = this.roleFormGroup.value.roleCtrl;
-    user.employeeId = this.employeeIdFormGroup.value.employeeCtrl;
-
+    const username: string = this.usernameFormGroup.value.usernameCtrl;
+    console.log(this.usernameFormGroup.value.usernameCtrl);
+    const password: string = this.passwordFormGroup.value.passwordCtrl;
+    const roleName: string = this.roleFormGroup.value.roleCtrl;
+    const employeeId: string = this.employeeIdFormGroup.value.employeeCtrl;
+    const user = {
+      username: username,
+      password: password,
+      roleName: roleName,
+      employeeId: employeeId
+    };
+    console.log(user);
     this.dialogRef.close(user);
   }
 

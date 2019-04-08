@@ -28,8 +28,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
 import { TasksComponent } from './dashboard/pages/tasks/tasks.component';
 import { TaskService } from './_services/task.service';
-import { AdminEditDialogComponent } from './dashboard/pages/admin/edit-dialog/admin-edit-dialog.component';
-import { AdminAddDialogComponent } from './dashboard/pages/admin/add-dialog/admin-add-dialog.component';
+import { AdminEditUserDialogComponent } from './dashboard/pages/admin/user-tab/edit-dialog/admin-edit-user-dialog.component';
+import { AdminAddUserDialogComponent } from './dashboard/pages/admin/user-tab/add-dialog/admin-add-user-dialog.component';
+import { AdminUserComponent } from './dashboard/pages/admin/user-tab/admin-user.component';
+import { AdminEmployeeComponent } from './dashboard/pages/admin/employee-tab/admin-employee.component';
+import { AdminEditEmployeeDialogComponent } from './dashboard/pages/admin/employee-tab/edit-dialog/admin-edit-employee-dialog.component';
+import { AdminAddEmployeeDialogComponent } from './dashboard/pages/admin/employee-tab/add-dialog/admin-add-employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,15 +43,21 @@ import { AdminAddDialogComponent } from './dashboard/pages/admin/add-dialog/admi
     ModerateComponent,
     TasksComponent,
     AdminComponent,
-    AdminEditDialogComponent,
-    AdminAddDialogComponent,
+    AdminUserComponent,
+    AdminEditUserDialogComponent,
+    AdminAddUserDialogComponent,
+    AdminEmployeeComponent,
+    AdminEditEmployeeDialogComponent,
+    AdminAddEmployeeDialogComponent,
     DashboardComponent,
     HeaderComponent,
     TasksComponent
   ],
   entryComponents: [
-    AdminEditDialogComponent,
-    AdminAddDialogComponent
+    AdminEditUserDialogComponent,
+    AdminAddUserDialogComponent,
+    AdminEditEmployeeDialogComponent,
+    AdminAddEmployeeDialogComponent,
   ],
   imports: [
     BrowserModule,
