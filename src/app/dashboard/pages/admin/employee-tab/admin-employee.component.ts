@@ -19,10 +19,10 @@ export class AdminEmployeeComponent implements OnInit, AfterViewInit {
   private isLoading: boolean;
   private displayedColumns = [
     'Id',
-    'Employeename',
-    'Password',
-    'Role',
-    'Employee',
+    'Occupation',
+    'FirstName',
+    'SecondName',
+    'VacationDays',
     'Actions'
   ];
   private name: string;
@@ -43,12 +43,7 @@ export class AdminEmployeeComponent implements OnInit, AfterViewInit {
 
   async getAllEmployees(): Promise<any> {
     try {
-      const Employees = await this.employeeService.getAll() as Employee[];
-      let data = Employees.map(employee => {
-        employee.firstName = employee.firstName ? employee.firstName : ' - // -';
-        employee.secondName = employee.secondName ? employee.secondName : ' - // -';
-        return employee;
-      });
+      let data = await this.employeeService.getAll() as Employee[];
       console.log(data);
       data = data.sort((a, b) => a.employeeId - b.employeeId);
       console.log(data);

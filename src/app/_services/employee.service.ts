@@ -8,28 +8,29 @@ import { Employee } from '../_models/Employee';
 })
 export class EmployeeService {
   private apiHost: string;
+  private apiRoute = 'emp';
 
   constructor() {
     this.apiHost = environment.apiHost;
   }
 
   async getAll(): Promise<Employee[]> {
-    let users;
+    let employees;
     try {
-      users = await axios.get(`${this.apiHost}/user/all`);
-      users = users.data;
-      console.log(users);
+      employees = await axios.get(`${this.apiHost}/emp/all`);
+      employees = employees.data;
+      console.log(employees);
     } catch (error) {
       console.error(error.message);
       throw error;
     }
-    return users;
+    return employees;
   }
 
   async getById(id: number): Promise<Employee> {
     let user;
     try {
-      user = await axios.get(`${this.apiHost}/user/get/${id}`);
+      user = await axios.get(`${this.apiHost}/emp/get/${id}`);
     } catch (error) {
       console.error(error.message);
       throw error;
@@ -37,11 +38,11 @@ export class EmployeeService {
     return user;
   }
 
-  async createUser(user: Employee): Promise<any> {
+  async create(employee: Employee): Promise<any> {
     try {
       console.log(`Create user`);
-      console.log(user);
-      const res = await axios.post(`${this.apiHost}/user/addUser`, user);
+      console.log(employee);
+      const res = await axios.post(`${this.apiHost}/emp/addUser`, employee);
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -50,9 +51,9 @@ export class EmployeeService {
 
   }
 
-  async update(user: Employee): Promise<any> {
+  async update(employee: Employee): Promise<any> {
     try {
-      await axios.post(`${this.apiHost}/user/updateUser`, user);
+      await axios.post(`${this.apiHost}/emp/updateUser`, employee);
     } catch (error) {
       throw error;
     }
