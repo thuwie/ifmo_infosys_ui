@@ -26,8 +26,6 @@ import { VacationService } from './_services/vacation.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
-import { TasksComponent } from './dashboard/pages/tasks/tasks.component';
-import { TaskService } from './_services/task.service';
 import { AdminEditUserDialogComponent } from './dashboard/pages/admin/user-tab/edit-dialog/admin-edit-user-dialog.component';
 import { AdminAddUserDialogComponent } from './dashboard/pages/admin/user-tab/add-dialog/admin-add-user-dialog.component';
 import { AdminUserComponent } from './dashboard/pages/admin/user-tab/admin-user.component';
@@ -43,7 +41,6 @@ import { AddVacationDialogComponent } from './dashboard/pages/vacations/add-dial
     LoginComponent,
     VacationsComponent,
     ModerateComponent,
-    TasksComponent,
     AdminComponent,
     AdminUserComponent,
     AdminEditUserDialogComponent,
@@ -53,7 +50,6 @@ import { AddVacationDialogComponent } from './dashboard/pages/vacations/add-dial
     AdminAddEmployeeDialogComponent,
     DashboardComponent,
     HeaderComponent,
-    TasksComponent,
     AddVacationDialogComponent
   ],
   entryComponents: [
@@ -104,7 +100,6 @@ import { AddVacationDialogComponent } from './dashboard/pages/vacations/add-dial
     AuthGuard,
     UserService,
     VacationService,
-    TaskService,
     ManagerService
   ],
   bootstrap: [AppComponent]
