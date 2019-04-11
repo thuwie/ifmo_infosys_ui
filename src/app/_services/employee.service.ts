@@ -40,9 +40,9 @@ export class EmployeeService {
 
   async create(employee: Employee): Promise<any> {
     try {
-      console.log(`Create user`);
+      console.log(`Create employee`);
       console.log(employee);
-      const res = await axios.post(`${this.apiHost}/emp/addUser`, employee);
+      const res = await axios.post(`${this.apiHost}/emp/addEmp`, employee);
       console.log(res);
     } catch (error) {
       console.error(error);
@@ -53,7 +53,7 @@ export class EmployeeService {
 
   async update(employee: Employee): Promise<any> {
     try {
-      await axios.post(`${this.apiHost}/emp/updateUser`, employee);
+      await axios.post(`${this.apiHost}/emp/updateEmp`, employee);
     } catch (error) {
       throw error;
     }

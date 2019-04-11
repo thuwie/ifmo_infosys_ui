@@ -1,23 +1,51 @@
 <div class="container">
   <div class="row" *ngIf="isLoading; else loaded">
-    <mat-card fxLayout="row" fxLayoutAlign="center center" >
+    <mat-card fxLayout="row" fxLayoutAlign="center center">
       <mat-spinner [diameter]="50"></mat-spinner>
     </mat-card>
   </div>
   <ng-template #loaded>
-    <div class="row" *ngIf="!vacations; else notNull">
-      <mat-card>There is no vacations yet.</mat-card>
+    <div >
+      <mat-card fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="20px">
+        <button mat-icon-button (click)="addVacation()">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </mat-card>
     </div>
+    <div class="row" *ngIf="!dataSourceVacations; else notNull">
+      <mat-card class="buttons">There is no vacations yet.</mat-card>
+    </div>
+
     <ng-template #notNull>
-      <mat-table [dataSource]="vacations">
-        <ng-container matColumnDef="Id">
-          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+      <mat-table [dataSource]="dataSourceVacations" matSort matSortDirection="asc">
+        <ng-container matColumnDef="vacationId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.vacationId}}</mat-cell>
         </ng-container>
+        <ng-container matColumnDef="employeeId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Employee Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.employeeId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="typeId">
+          <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.typeId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="vacationStart">
+          <mat-header-cell *matHeaderCellDef>Start</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.vacationStart}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="vacationDays">
+          <mat-header-cell *matHeaderCellDef>Days</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.vacationDays}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="vacationStatus">
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.vacationStatus}}</mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
       </mat-table>
     </ng-template>
   </ng-template>
 </div>
-

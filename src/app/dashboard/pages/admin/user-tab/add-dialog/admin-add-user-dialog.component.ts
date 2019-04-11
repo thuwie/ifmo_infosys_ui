@@ -40,14 +40,14 @@ export class AdminAddUserDialogComponent implements OnInit {
     console.log(this.usernameFormGroup.value.usernameCtrl);
     const password: string = this.passwordFormGroup.value.passwordCtrl;
     const roleName: string = this.roleFormGroup.value.roleCtrl;
-    const employeeId: string = this.employeeIdFormGroup.value.employeeCtrl;
+    const employeeId: number = parseInt(this.employeeIdFormGroup.value.employeeCtrl, 10);
+
     const user = {
       username: username,
       password: password,
       roleName: roleName,
       employeeId: employeeId
     };
-    console.log(user);
     this.dialogRef.close(user);
   }
 

@@ -3,10 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiHost: 'http://192.168.1.37:5000',
-  // apiHost: 'http://192.168.1.46:5000',
   // apiHost: 'https://ifmoinfosys.herokuapp.com',
+  apiHost: 'http://192.168.1.37:5000',
+
+
+  // apiHost: 'http://192.168.1.46:5000',
+  production: false,
 };
 
 /*

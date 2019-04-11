@@ -1,22 +1,22 @@
 <h1 mat-dialog-title>Add employee</h1>
 <div mat-dialog-content>
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstNameGroup">
-      <form [formGroup]="firstNameGroup">
-        <ng-template matStepLabel>First name</ng-template>
+    <mat-step [stepControl]="employeeId">
+      <form [formGroup]="employeeId">
+        <ng-template matStepLabel>Employee ID</ng-template>
         <mat-form-field>
-          <input matInput placeholder="First name" formControlName="firstNameCtrl" required>
+          <input matInput placeholder="5" formControlName="employeeIdCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondNameGroup">
-      <form [formGroup]="secondNameGroup">
-        <ng-template matStepLabel>Second name</ng-template>
+    <mat-step [stepControl]="typeGroup">
+      <form [formGroup]="typeGroup">
+        <ng-template matStepLabel>Vacation type ID</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Second name" formControlName="secondNameCtrl" required>
+          <input matInput placeholder="1" formControlName="typeCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -24,11 +24,11 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="occupationIdGroup">
-      <form [formGroup]="occupationIdGroup">
-        <ng-template matStepLabel>Occupation Id</ng-template>
+    <mat-step [stepControl]="vacationStartGroup">
+      <form [formGroup]="vacationStartGroup">
+        <ng-template matStepLabel>Vacation start</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Occupation Id" formControlName="occupationIdCtrl">
+          <input matInput placeholder="1555200000000" formControlName="vacationStartCtrl">
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>

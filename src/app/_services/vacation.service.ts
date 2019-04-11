@@ -25,15 +25,19 @@ export class VacationService {
     return vacations;
   }
 
-  async getById(id: number): Promise<Vacation> {
-    let user;
+  async create(vacation): Promise<any> {
     try {
-      user = await axios.get(`${this.apiHost}/vacation/get/:${id}`);
+      console.log(`Create vacation`);
+      console.log(vacation);
+      vacation.employeeId = parseInt(vacation.employeeId, 10);
+      console.log(typeof vacation.employeeId);
+      const res = await axios.post(`${this.apiHost}/processes/vacationProcess`, vacation);
+      console.log(res);
     } catch (error) {
-      console.error(error.message);
-      user = null;
+      console.error(error);
+      throw error;
     }
-    return user;
+
   }
 
 }

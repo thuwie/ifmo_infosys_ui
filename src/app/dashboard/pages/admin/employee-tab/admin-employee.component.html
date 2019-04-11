@@ -5,9 +5,9 @@
     </mat-card>
   </div>
   <ng-template #loaded>
-    <div >
-     <mat-card fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="20px">
-        <button mat-icon-button (click)="addUser()">
+    <div>
+      <mat-card fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="20px">
+        <button mat-icon-button (click)="addEmployee()">
           <mat-icon>add_circle_outline</mat-icon>
         </button>
       </mat-card>
@@ -22,17 +22,17 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.employeeId}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="Occupation">
-          <mat-header-cell *matHeaderCellDef>Occupation</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{element.occupationId}}</mat-cell>
-        </ng-container>
         <ng-container matColumnDef="FirstName">
-          <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="SecondName">
-          <mat-header-cell *matHeaderCellDef>SecondName</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>Second Name</mat-header-cell>
           <mat-cell *matCellDef="let element">{{element.secondName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Occupation">
+          <mat-header-cell *matHeaderCellDef>Occupation ID</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.occupationId}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="VacationDays">
           <mat-header-cell *matHeaderCellDef>VacationDays</mat-header-cell>
@@ -40,14 +40,6 @@
         </ng-container>
         <ng-container matColumnDef="Actions">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <button mat-icon-button (click)="editEmployee(row)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="getEmployee(row)">
-              <mat-icon>assignment</mat-icon>
-            </button>
-          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

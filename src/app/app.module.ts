@@ -34,6 +34,8 @@ import { AdminUserComponent } from './dashboard/pages/admin/user-tab/admin-user.
 import { AdminEmployeeComponent } from './dashboard/pages/admin/employee-tab/admin-employee.component';
 import { AdminEditEmployeeDialogComponent } from './dashboard/pages/admin/employee-tab/edit-dialog/admin-edit-employee-dialog.component';
 import { AdminAddEmployeeDialogComponent } from './dashboard/pages/admin/employee-tab/add-dialog/admin-add-employee-dialog.component';
+import { ManagerService } from './_services/manager.service';
+import { AddVacationDialogComponent } from './dashboard/pages/vacations/add-dialog/add-vacation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,13 +53,15 @@ import { AdminAddEmployeeDialogComponent } from './dashboard/pages/admin/employe
     AdminAddEmployeeDialogComponent,
     DashboardComponent,
     HeaderComponent,
-    TasksComponent
+    TasksComponent,
+    AddVacationDialogComponent
   ],
   entryComponents: [
     AdminEditUserDialogComponent,
     AdminAddUserDialogComponent,
     AdminEditEmployeeDialogComponent,
     AdminAddEmployeeDialogComponent,
+    AddVacationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +104,8 @@ import { AdminAddEmployeeDialogComponent } from './dashboard/pages/admin/employe
     AuthGuard,
     UserService,
     VacationService,
-    TaskService
+    TaskService,
+    ManagerService
   ],
   bootstrap: [AppComponent]
 })

@@ -37,10 +37,12 @@ export class UserService {
     return user;
   }
 
-  async createUser(user: User): Promise<any> {
+  async createUser(user): Promise<any> {
     try {
       console.log(`Create user`);
       console.log(user);
+      user.employeeId = parseInt(user.employeeId, 10);
+      console.log(typeof user.employeeId);
       const res = await axios.post(`${this.apiHost}/user/addUser`, user);
       console.log(res);
     } catch (error) {

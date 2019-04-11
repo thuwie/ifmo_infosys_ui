@@ -1,7 +1,8 @@
 export interface Vacation {
   vacationId: number;
-  roleId: number;
+  employeeId: number;
   typeId: number;
   vacationStart: any;
   vacationDays: number;
+  vacationStatus: number;
 }

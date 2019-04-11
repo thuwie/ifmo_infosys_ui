@@ -6,6 +6,7 @@ import {
 } from '@angular/material';
 import { AdminEditUserDialogComponent } from './edit-dialog/admin-edit-user-dialog.component';
 import { AdminAddUserDialogComponent } from './add-dialog/admin-add-user-dialog.component';
+import { AuthService } from '../../../../_services/auth.service';
 
 @Component({
   selector: 'app-admin-user',
@@ -28,9 +29,11 @@ export class AdminUserComponent implements OnInit, AfterViewInit {
   private name: string;
 
   constructor(private userService: UserService,
+              private authService: AuthService,
               public dialog: MatDialog) {
     this.isLoading = true;
     this.name = 'az';
+    console.log(this.authService.getRole());
   }
 
   ngOnInit() {
@@ -103,7 +106,6 @@ export class AdminUserComponent implements OnInit, AfterViewInit {
 
           console.error(error.message);
         }
-
       } else {
         console.log('woopsie');
       }

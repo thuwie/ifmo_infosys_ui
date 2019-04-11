@@ -30,7 +30,6 @@ export class AdminEmployeeComponent implements OnInit, AfterViewInit {
   constructor(private employeeService: EmployeeService,
               public dialog: MatDialog) {
     this.isLoading = true;
-    this.name = 'az';
   }
 
   ngOnInit() {
@@ -48,11 +47,30 @@ export class AdminEmployeeComponent implements OnInit, AfterViewInit {
       data = data.sort((a, b) => a.employeeId - b.employeeId);
       console.log(data);
       this.dataSourceEmployee.data = data;
-      // this.Employees.sort = this.sort;
     } catch (error) {
       console.error(error.message);
     }
     this.isLoading = false;
+  }
+
+  async addEmployee(): Promise<any> {
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.dialog.open(AdminAddEmployeeDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(async employee => {
+      if (employee) {
+        console.log('The dialog was closed');
+        console.log(employee);
+        try {
+          await this.employeeService.create(employee);
+        } catch (error) {
+
+          console.error(error.message);
+        }
+      } else {
+        console.log('woopsie');
+      }
+    });
   }
 }
 

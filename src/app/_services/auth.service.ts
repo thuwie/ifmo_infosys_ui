@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   public token: string;
   private apiHost: string;
+  private role: string
 
   constructor(private router: Router) {
     this.apiHost = environment.apiHost;
@@ -19,12 +20,13 @@ export class AuthService {
   async login(username: string, password: string): Promise<boolean> {
     try {
       /*const response = await axios.post(`${this.apiHost}/auth`, {
-        username: username,
-        password: password
-      });*/
-      // const token = response.token;
-      console.log('respo');
+       username: username,
+       password: password
+       });
+       const token = response.token;*/
+      console.log('token');
       // console.log(token);
+      this.role = username === 'user' ? 'Admin' : (username === 'user1' ? 'User' : 'Manager');
       const token = '{ username: "test", token: "token" }'; // Waiting for the API to return me a token.
       if (token) {
         this.token = token;
@@ -44,6 +46,10 @@ export class AuthService {
     this.token = null;
     localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
+  }
+
+  public getRole(): string {
+    return this.role;
   }
 }
 
