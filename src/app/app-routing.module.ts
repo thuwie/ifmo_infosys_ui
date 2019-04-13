@@ -5,7 +5,6 @@ import { VacationsComponent } from './dashboard/pages/vacations/vacations.compon
 import { ModerateComponent } from './dashboard/pages/moderate/moderate.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TasksComponent } from './dashboard/pages/tasks/tasks.component';
 import { AdminComponent } from './dashboard/pages/admin/admin.component';
 
 const routes: Routes = [

@@ -1,4 +1,4 @@
-export interface Proceses {
+export interface Process {
   taskId: number;
   processStateDefinition: string;
   ownerId: number;

@@ -4,7 +4,8 @@
 
 export const environment = {
   // apiHost: 'https://ifmoinfosys.herokuapp.com',
-  apiHost: 'http://192.168.1.37:5000',
+  // apiHost: 'http://192.168.1.37:5000',
+  apiHost: 'http://localhost:5000',
 
 
   // apiHost: 'http://192.168.1.46:5000',

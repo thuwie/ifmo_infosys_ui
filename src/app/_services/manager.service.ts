@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import axios from 'axios';
 import { Router } from '@angular/router';
+const FileSaver = require('file-saver');
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,16 @@ export class ManagerService {
       console.error(error);
       return false;
     }
+  }
+
+  async getReport(taskId: number): Promise<any> {
+    try {
+      const response = await axios.get(`${this.apiHost}/processes/report/get/${taskId}`, {responseType: 'blob'});
+      FileSaver.saveAs(response.data, 'filename.pdf');
+    } catch (error) {
+      console.error(error);
+      return false;
+    } 
   }
 
   logout(): void {

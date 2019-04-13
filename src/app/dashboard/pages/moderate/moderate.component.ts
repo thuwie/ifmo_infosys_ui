@@ -68,6 +68,14 @@ export class ModerateComponent implements OnInit, AfterViewInit {
     }
   }
 
+  private async getReport(row: Process) {
+    try {
+      const response = await this.managerService.getReport(row.taskId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   /*async getUser(row: Proceses): Promise<any> {
    let user = null;
    try {
@@ -95,8 +103,7 @@ export class ModerateComponent implements OnInit, AfterViewInit {
    }
 
    });
-   }
-
+   */
    async addUser(): Promise<any> {
    const dialogConfig = new MatDialogConfig();
    const dialogRef = this.dialog.open(AdminAddUserDialogComponent, dialogConfig);
@@ -115,5 +122,5 @@ export class ModerateComponent implements OnInit, AfterViewInit {
    console.log('woopsie');
    }
    });
-   }*/
+   }
 }
